@@ -15,7 +15,6 @@ class TodoProvider extends ChangeNotifier {
 
   void changeStatus(int index) {
     _todoList[index].status = true;
-    _todoList.sort((a, b) => b.status ? -1 : 1);
     notifyListeners();
   }
 
