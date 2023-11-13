@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:lecture_one/home.dart';
-import 'package:lecture_one/signin.dart';
+import 'package:lecture_one/providers/todo.provider.dart';
+import 'package:lecture_one/todo.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => TodoProvider(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: const AddToDoPage(),
     );
   }
 }
