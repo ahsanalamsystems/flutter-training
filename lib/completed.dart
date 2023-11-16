@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:lecture_one/providers/todo.provider.dart';
 import 'package:provider/provider.dart';
 
-class AddToDoPage extends StatefulWidget {
-  const AddToDoPage({super.key});
+class CompletedTaskPage extends StatefulWidget {
+  const CompletedTaskPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _AddToDoPageState createState() => _AddToDoPageState();
+  _CompletedTaskPageState createState() => _CompletedTaskPageState();
 }
 
-class _AddToDoPageState extends State<AddToDoPage> {
+class _CompletedTaskPageState extends State<CompletedTaskPage> {
   TextEditingController textFieldController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -20,7 +20,7 @@ class _AddToDoPageState extends State<AddToDoPage> {
       return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Todo List',
+            'Completed Task',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           backgroundColor: const Color.fromARGB(255, 11, 90, 181),
@@ -32,45 +32,15 @@ class _AddToDoPageState extends State<AddToDoPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: textFieldController,
-                      decoration: const InputDecoration(
-                          labelText: 'Description',
-                          focusColor: Color.fromARGB(255, 11, 90, 181)),
-                      validator: (value) {
-                        if ((value == null || value == '') ||
-                            value.trim().isEmpty) {
-                          return 'Kindly add description';
-                        }
-                        return null;
-                      },
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            todoProvider.addTask(textFieldController.text);
-                            textFieldController.text = '';
-                          }
-                        },
-                        child: const Text(
-                          'Add',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 11, 90, 181)),
-                        ),
-                      ),
-                    ),
-                    const Divider(),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: todoProvider.todoList.length,
+                          itemCount: todoProvider.completedTaskList.length,
                           itemBuilder: (context, index) {
-                            final task = todoProvider.todoList[index];
+                            final task = todoProvider.completedTaskList[index];
                             return Card(
-                              color: const Color.fromARGB(255, 245, 235, 42),
+                              color: const Color.fromARGB(255, 9, 215, 156),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: SizedBox(
@@ -81,12 +51,14 @@ class _AddToDoPageState extends State<AddToDoPage> {
                                       children: [
                                         Row(
                                           children: [
-                                            Checkbox(
-                                                value: task.status,
-                                                onChanged: (value) {
-                                                  todoProvider
-                                                      .changeStatus(index);
-                                                }),
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: const Icon(
+                                                Icons.check_circle_outline,
+                                                color: Colors.white,
+                                              ),
+                                            ),
                                             Text(task.description)
                                           ],
                                         ),
@@ -109,7 +81,7 @@ class _AddToDoPageState extends State<AddToDoPage> {
                                                       TextButton(
                                                         onPressed: () {
                                                           Navigator.of(context)
-                                                              .pop(); // Close the dialog
+                                                              .pop();
                                                         },
                                                         child: const Text('No'),
                                                       ),
@@ -118,7 +90,7 @@ class _AddToDoPageState extends State<AddToDoPage> {
                                                           todoProvider
                                                               .deleteTask(
                                                                   task.id,
-                                                                  'pending');
+                                                                  'complete');
 
                                                           Navigator.of(context)
                                                               .pop();
@@ -138,7 +110,7 @@ class _AddToDoPageState extends State<AddToDoPage> {
                           }),
                     ),
                     Visibility(
-                        visible: todoProvider.todoList.isEmpty,
+                        visible: todoProvider.completedTaskList.isEmpty,
                         child: const Text(
                           'No Task',
                           style: TextStyle(
