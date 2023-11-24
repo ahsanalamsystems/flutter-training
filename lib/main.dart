@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:lecture_one/cache/cache.provider.dart';
+import 'package:lecture_one/database/product.provider.dart';
 import 'package:lecture_one/home.dart';
-import 'package:lecture_one/http/weather.dart';
-import 'package:lecture_one/http/weather.http.service.dart';
-import 'package:lecture_one/signin.dart';
+import 'package:lecture_one/preference/preference.provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (context) => SharedPreferencesProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => CacheProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,12 +26,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      theme: Provider.of<SharedPreferencesProvider>(context).isDarkModeEnabled
+          ? ThemeData.dark()
+          : ThemeData.light(),
+      home: const MyHomePage(),
     );
   }
 }

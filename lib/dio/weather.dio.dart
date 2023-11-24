@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lecture_one/constant/color.constant.dart';
 import 'package:lecture_one/dio/weather.dio.service.dart';
-import 'package:lecture_one/http/weather.http.service.dart';
 import 'package:lecture_one/model/weather.model.dart';
-import 'package:provider/provider.dart';
 
 class WeatherDioPage extends StatefulWidget {
   const WeatherDioPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _WeatherDioPageState createState() => _WeatherDioPageState();
 }
 
@@ -26,9 +25,6 @@ class _WeatherDioPageState extends State<WeatherDioPage> {
   void getWeatherUpdate() async {
     WeatherDioService weatherService = WeatherDioService();
     weather = await weatherService.getWeatherUpdate();
-    print('-------------------------------------------------');
-    print('weather: $weather');
-    print('-------------------------------------------------');
   }
 
   @override
@@ -49,7 +45,7 @@ class _WeatherDioPageState extends State<WeatherDioPage> {
             colors: [
               Color.fromARGB(255, 190, 16, 225),
               Color.fromARGB(255, 100, 136, 212)
-            ], // Set your gradient colors here
+            ],
           ),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

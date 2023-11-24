@@ -8,6 +8,7 @@ class WeatherHTTPPage extends StatefulWidget {
   const WeatherHTTPPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _WeatherHTTPPageState createState() => _WeatherHTTPPageState();
 }
 
@@ -44,7 +45,7 @@ class _WeatherHTTPPageState extends State<WeatherHTTPPage> {
             colors: [
               Color.fromARGB(255, 190, 16, 225),
               Color.fromARGB(255, 100, 136, 212)
-            ], // Set your gradient colors here
+            ],
           ),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -72,7 +73,6 @@ class _WeatherHTTPPageState extends State<WeatherHTTPPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        // height: 300,
                         child: Card(
                           color: ColorConstant.primary,
                           elevation: 0,
