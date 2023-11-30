@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "639090914957",
+    "firebase_url": "https://flutter-app-4fa34-default-rtdb.firebaseio.com",
+    "project_id": "flutter-app-4fa34",
+    "storage_bucket": "flutter-app-4fa34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639090914957:android:54b6c8179034c4ea64d4c4",
+        "android_client_info": {
+          "package_name": "com.example.lecture_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDggbmwCHRM4a8-UilwyC0bNFH2bCtofjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
