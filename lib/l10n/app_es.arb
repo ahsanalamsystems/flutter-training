@@ -1,0 +1,9 @@
+{
+    "selectLanguage": "Seleccione el idioma",
+    "camera": "cámara",
+    "accelerometer": "Acelerómetro",
+    "gyroscope": "Giroscopio",
+    "magnetometer": "Magnetómetro",
+    "sensorNotFound": "Sensor no encontrado",
+    "sensorError": "Su dispositivo no es compatible con el sensor"
+}

@@ -1,0 +1,16 @@
+{
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {
+    "description": "To Select Language"
+  },
+  "camera": "Camera",
+  "@camera": {
+    "description": "To open camera"
+  },
+  "accelerometer": "Accelerometer",
+  "gyroscope": "Gyroscope",
+  "magnetometer": "Magnetometer",
+  "sensorNotFound": "Sensor Not Found",
+  "sensorError": "Your device doesn`t support the sensor"
+
+}
